@@ -10,56 +10,50 @@ export default function Home(){
     if(localStorage.getItem("language") == "fa"){
       router.push("/fa")
     }else{
-      console.log("hello :)")
+      console.log("سلام :)")
     }
   },[router])
   useEffect(()=>{
     for(let i=0;i<([
-      "a",
-      " ",
-      "f",
-      "r",
-      "o",
-      "n",
-      "t",
-      "-",
-      "e",
-      "n",
-      "d",
-      " ",
-      "d",
-      "e",
-      "v",
-      "e",
-      "l",
-      "o",
-      "p",
-      "e",
-      "r"
+      "یک",
+          " ",
+          "ف",
+          "ر",
+          "ا",
+          "ن",
+          "ت",
+          " ",
+          "ا",
+          "ن",
+          "د",
+          " ",
+          "د",
+          "و",
+          "ل",
+          "و",
+          "پ",
+          "ر",
     ]).length;i++){
       setTimeout(() => {
         settext(prev=>prev+[
-          "a",
+          "یک",
           " ",
-          "f",
-          "r",
-          "o",
-          "n",
-          "t",
-          "-",
-          "e",
-          "n",
-          "d",
+          "ف",
+          "ر",
+          "ا",
+          "ن",
+          "ت",
           " ",
-          "d",
-          "e",
-          "v",
-          "e",
-          "l",
-          "o",
-          "p",
-          "e",
-          "r"
+          "ا",
+          "ن",
+          "د",
+          " ",
+          "د",
+          "و",
+          "ل",
+          "و",
+          "پ",
+          "ر",
         ][i])
       }, i*100);
     }
@@ -83,33 +77,33 @@ export default function Home(){
         <Header/>
       </div>
       <div className="flex flex-col justify-center items-center md:justify-between md:flex-row">
-        <div>
-          <h3 className="text-5xl ml-5 font-bold">Amir</h3>
-          <h3 className="text-5xl ml-5 font-black">Moheb</h3>
-          <h3 className="text-center text-5xl m-5 md:text-left">{text} {under}</h3>
-        </div>
-        <div>
+      <div>
           <button className="
             bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 h-18
             text-white font-bold py-3 px-6 rounded-full w-52
             shadow-lg transform transition duration-1000 
             hover:scale-105 hover:shadow-2xl hover:from-pink-500 hover:to-yellow-500 md:mr-5 text-xl
-          ">See my resume</button>
-      </div>
+          ">رزومه من را ببین</button>
+        </div>
+        <div>
+          <h3 className="text-5xl mr-5 font-bold text-right">امیر</h3>
+          <h3 className="text-5xl mr-5 font-black text-right">محب</h3>
+          <h3 className="text-center text-5xl m-5 md:text-left">{under} {text}</h3>
+        </div>
       </div>
       <div className="flex justify-center gap-10 flex-col-reverse m-5 lg:flex-row">
         <img className="rounded-xl lg:w-1/2 w-full mx-auto" src={"/images/my-img.jpg"}/>
         <div id="eDiv" className="bg-pink-100 rounded-2xl">
-          <h3 className="text-3xl text-center">About me:</h3>
-          <h2>I am Amir Mohammad Moheb, originally from Tabriz.</h2>
-          <h2>I am a front-end developer who works on my projects using React and Next.js.</h2>
-          <h2>I create exciting projects, and if you like, you can get in touch with me.</h2>
+          <h3 className="text-3xl text-center">:درباره من</h3>
+          <h2 className="text-right">من امیر محمد محب هستم، اصالتاً از تبریز</h2>
+          <h2 className="text-right">کار میکنم react و next.js من برنامه نویس فرانت اند هستم و با</h2>
+          <h2 className="text-right">من پروژه‌های جذابی می‌سازم و اگر مایل باشید می‌توانید با من تماس بگیرید</h2>
         </div>
       </div>
       <div id="eDiv" className="flex flex-col justify-center items-center pb-3">
         <div className="w-11/12">
-          <h2>I first started working with Scratch at the age of 10 and spent some time creating games with it. Later, I moved on to Python and mostly used it to develop trading bots, which proved to be effective.</h2>
-          <h2>I have now been a front-end web developer for two years, primarily working on the visual aspects of websites. Most of the time, I have been designing and building website interfaces on my own.</h2>
+          <h2 className="text-right">من برای اولین بار در سن ۱۰ سالگی با اسکرچ کار کردن را شروع کردم و مدتی با آن بازی ساختم. بعداً به پایتون روی آوردم و عمدتاً از آن برای توسعه ربات‌های تریدر استفاده کردم که مؤثر واقع شدند</h2>
+          <h2 className="text-right">اکنون دو سال است که برنامه‌نویس فرانت‌اند وب هستم و بیشتر روی جنبه‌های ظاهری وبسایت‌ها کار می‌کنم. اغلب اوقات، خودم رابط‌های وبسایت را طراحی و پیاده‌سازی کرده‌ام</h2>
         </div>
         <div className="flex">
           <a><img className="w-16" src={"/images/call.png"}/></a>
@@ -119,7 +113,7 @@ export default function Home(){
       </div>
       <div className="flex justify-center gap-10 flex-col-reverse m-5 lg:flex-row">
         <div id="eDiv" className="rounded-2xl lg:w-1/2 w-auto flex flex-col items-center">
-          <h3 className="text-3xl text-center">Skills:</h3>
+          <h3 className="text-3xl text-center mb-5">:مهارت‌ها</h3>
           <div className="flex gap-5 flex-wrap justify-center">
             <Skill name="Python"/>
             <Skill name="HTML"/>
@@ -133,10 +127,10 @@ export default function Home(){
           </div>
         </div>
         <div id="eDiv" className="rounded-2xl lg:w-1/2 w-auto">
-          <h3 className="text-3xl text-center">More about me:</h3>
-          <h2>Age: 15</h2>
-          <h2>Birthplace: Tabriz</h2>
-          <h2>Biography: Creative front-end developer, interested in art—especially painting—and enjoys various scripting projects in Python as a hobby.</h2>
+          <h3 className="text-3xl text-center">:اطلاعات بیشتر درباره من</h3>
+          <h2 className="text-right">سن: 15</h2>
+          <h2 className="text-right">محل تولد: تبریز</h2>
+          <h2 className="text-right">.بیوگرافی: برنامه‌نویس خلاق فرانت‌اند، علاقه‌مند به هنر به ویژه نقاشی و انجام پروژه‌های متنوع اسکریپت‌نویسی در پایتون به عنوان سرگرمی</h2>
         </div>
       </div>
     </>

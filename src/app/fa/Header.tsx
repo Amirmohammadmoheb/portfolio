@@ -1,0 +1,47 @@
+"use client"
+import { useState, useEffect } from "react"
+
+export default function Header() {
+  const [mode, setMode] = useState({
+    icon: "images/sun.png",
+    bg: "#10101a",
+    color: "white",
+    ediv:"#111827"
+  })
+
+  function changeMode() {
+    setMode(prev =>
+      prev.bg === "#10101a"
+        ? { icon: "images/moon.png", bg: "#ecf0f1", color: "black",ediv:"#fce7f3" }
+        : { icon: "images/sun.png", bg: "#10101a", color: "white",ediv:"#111827" }
+    )
+  }
+
+  useEffect(() => {
+    const saved = localStorage.getItem("mode")
+    if (saved) setMode(JSON.parse(saved))
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem("mode", JSON.stringify(mode))
+    document.body.style.backgroundColor = mode.bg
+    document.body.style.color = mode.color
+    document.querySelectorAll("#eDiv").forEach(tag=>tag.style.backgroundColor=mode.ediv)
+  }, [mode])
+
+  function setUrl() {
+    localStorage.setItem("language", "en")
+  }
+
+  return (
+    <div className="m-5 flex items-center gap-3">
+      <img
+        src={mode.icon}
+        className="w-12 cursor-pointer"
+        onClick={changeMode}
+        alt="mode toggle"
+      />
+      <a href="/" onClick={setUrl}>English</a>
+    </div>
+  )
+}
