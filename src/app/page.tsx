@@ -18,16 +18,26 @@ export default function Home() {
   }, [router])
 
   useEffect(() => {
+    let timeouts: NodeJS.Timeout[] = []
+    setText("")
+  
     const chars = [
       "a"," ","f","r","o","n","t","-","e","n","d"," ",
       "d","e","v","e","l","o","p","e","r"
     ]
-    for (let i = 0; i < chars.length; i++) {
-      setTimeout(() => {
-        setText(prev => prev + chars[i])
+  
+    chars.forEach((char, i) => {
+      const timeout = setTimeout(() => {
+        setText(prev => prev + char)
       }, i * 100)
+      timeouts.push(timeout)
+    })
+  
+    return () => {
+      timeouts.forEach(t => clearTimeout(t))
     }
   }, [])
+  
 
   useEffect(() => {
     const interval = setInterval(() => setUnder(prev => prev === "." ? "|" : "."), 500)

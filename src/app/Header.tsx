@@ -1,9 +1,11 @@
 "use client"
 import { useState, useEffect } from "react"
+import Image from "next/image"
+import Link from "next/link"
 
 export default function Header() {
   const [mode, setMode] = useState({
-    icon: "images/sun.png",
+    icon: "/images/sun.png",
     bg: "#10101a",
     color: "white",
     ediv:"#111827"
@@ -12,8 +14,8 @@ export default function Header() {
   function changeMode() {
     setMode(prev =>
       prev.bg === "#10101a"
-        ? { icon: "images/moon.png", bg: "#ecf0f1", color: "black",ediv:"#fce7f3"}
-        : { icon: "images/sun.png", bg: "#10101a", color: "white",ediv:"#111827" }
+        ? { icon: "/images/moon.png", bg: "#ecf0f1", color: "black", ediv:"#fce7f3"}
+        : { icon: "/images/sun.png", bg: "#10101a", color: "white", ediv:"#111827" }
     )
   }
 
@@ -35,13 +37,15 @@ export default function Header() {
 
   return (
     <div className="m-5 flex items-center gap-3">
-      <img
+      <Image
         src={mode.icon}
-        className="w-12 cursor-pointer"
+        width={48}
+        height={48}
+        className="cursor-pointer"
         onClick={changeMode}
         alt="mode toggle"
       />
-      <a href="/fa" onClick={setUrl}>فارسی</a>
+      <Link href="/fa" onClick={setUrl}>فارسی</Link>
     </div>
   )
 }

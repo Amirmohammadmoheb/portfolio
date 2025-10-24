@@ -6,8 +6,27 @@ import Header from "./Header"
 
 export default function Home() {
   const router = useRouter()
-  const [text, setText] = useState("")
+  const [text, setText] = useState("یک فرانت اند دولوپر")
   const [under, setUnder] = useState(".")
+  useEffect(() => {
+    let timeouts: NodeJS.Timeout[] = []
+    setText("")
+  
+    const chars = [
+      "ی","ک"," ","ت","و","س","ع","ه"," ","د","ه","ن","د","ه"," ","ف","ر","ا","ن","ت"," ","ا","ن","د"
+    ]
+  
+    chars.forEach((char, i) => {
+      const timeout = setTimeout(() => {
+        setText(prev => prev + char)
+      }, i * 100)
+      timeouts.push(timeout)
+    })
+  
+    return () => {
+      timeouts.forEach(t => clearTimeout(t))
+    }
+  }, [])
   
   useEffect(() => {
     if (localStorage.getItem("language") == "fa") {
@@ -17,17 +36,7 @@ export default function Home() {
     }
   }, [router])
 
-  useEffect(() => {
-    const chars = [
-      "یک"," ","ف","ر","ا","ن","ت"," ","ا","ن","د"," ",
-      "د","و","ل","و","پ","ر"
-    ]
-    for (let i = 0; i < chars.length; i++) {
-      setTimeout(() => {
-        setText(prev => prev + chars[i])
-      }, i * 100)
-    }
-  }, [])
+
 
   useEffect(() => {
     const interval = setInterval(() => setUnder(prev => prev === "." ? "|" : "."), 500)
