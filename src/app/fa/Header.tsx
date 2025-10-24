@@ -28,7 +28,7 @@ export default function Header() {
     localStorage.setItem("mode", JSON.stringify(mode))
     document.body.style.backgroundColor = mode.bg
     document.body.style.color = mode.color
-    document.querySelectorAll("#eDiv").forEach(tag => tag.style.backgroundColor = mode.ediv)
+    document.querySelectorAll<HTMLElement>("#eDiv").forEach(tag => tag.style.backgroundColor = mode.ediv)
   }, [mode])
 
   function setUrl() {
