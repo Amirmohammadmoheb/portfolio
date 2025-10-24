@@ -9,7 +9,7 @@ export default function Home() {
   const [text, setText] = useState("یک فرانت اند دولوپر")
   const [under, setUnder] = useState(".")
   useEffect(() => {
-    let timeouts: NodeJS.Timeout[] = []
+    const timeouts: NodeJS.Timeout[] = []
     setText("")
   
     const chars = [

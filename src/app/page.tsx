@@ -18,7 +18,7 @@ export default function Home() {
   }, [router])
 
   useEffect(() => {
-    let timeouts: NodeJS.Timeout[] = []
+    const timeouts: NodeJS.Timeout[] = []
     setText("")
   
     const chars = [
