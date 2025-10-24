@@ -1,83 +1,64 @@
 "use client"
 import { useRouter } from "next/navigation"
-import { useEffect,useState} from "react"
+import { useEffect, useState } from "react"
+import Image from "next/image"
 import Header from "./Header"
-export default function Home(){
+
+export default function Home() {
   const router = useRouter()
-  const [text,settext] = useState("");
-  const [under,setUnder] = useState(".")
-  useEffect(()=>{
-    if(localStorage.getItem("language") == "fa"){
+  const [text, setText] = useState("")
+  const [under, setUnder] = useState(".")
+  
+  useEffect(() => {
+    if (localStorage.getItem("language") == "fa") {
       router.push("/fa")
-    }else{
+    } else {
       console.log("سلام :)")
     }
-  },[router])
-  useEffect(()=>{
-    for(let i=0;i<([
-      "یک",
-          " ",
-          "ف",
-          "ر",
-          "ا",
-          "ن",
-          "ت",
-          " ",
-          "ا",
-          "ن",
-          "د",
-          " ",
-          "د",
-          "و",
-          "ل",
-          "و",
-          "پ",
-          "ر",
-    ]).length;i++){
+  }, [router])
+
+  useEffect(() => {
+    const chars = [
+      "یک"," ","ف","ر","ا","ن","ت"," ","ا","ن","د"," ",
+      "د","و","ل","و","پ","ر"
+    ]
+    for (let i = 0; i < chars.length; i++) {
       setTimeout(() => {
-        settext(prev=>prev+[
-          "یک",
-          " ",
-          "ف",
-          "ر",
-          "ا",
-          "ن",
-          "ت",
-          " ",
-          "ا",
-          "ن",
-          "د",
-          " ",
-          "د",
-          "و",
-          "ل",
-          "و",
-          "پ",
-          "ر",
-        ][i])
-      }, i*100);
+        setText(prev => prev + chars[i])
+      }, i * 100)
     }
-  },[])
-  useEffect(()=>{
-    setInterval(()=>setUnder(prev=>prev==="."?"|":"."),500)
-  },[])
-  function Skill(props:{name:string}){
-    return(
+  }, [])
+
+  useEffect(() => {
+    const interval = setInterval(() => setUnder(prev => prev === "." ? "|" : "."), 500)
+    return () => clearInterval(interval)
+  }, [])
+
+  function Skill(props: { name: string }) {
+    return (
       <div className="w-24">
         <div className="w-24 h-24 flex justify-center items-center">
-          <img src={`images/${props.name}.png`} className="w-24"/>
+          <Image 
+            src={`/images/${props.name}.png`} 
+            alt={props.name} 
+            width={96} 
+            height={96} 
+            className="w-24"
+          />
         </div>
         <h3 className="text-center text-2xl">{props.name}</h3>
       </div>
     )
   }
-  return(
+
+  return (
     <>
       <div>
-        <Header/>
+        <Header />
       </div>
+
       <div className="flex flex-col justify-center items-center md:justify-between md:flex-row">
-      <div>
+        <div>
           <button className="
             bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 h-18
             text-white font-bold py-3 px-6 rounded-full w-52
@@ -91,8 +72,15 @@ export default function Home(){
           <h3 className="text-center text-5xl m-5 md:text-left">{under} {text}</h3>
         </div>
       </div>
+
       <div className="flex justify-center gap-10 flex-col-reverse m-5 lg:flex-row">
-        <img className="rounded-xl lg:w-1/2 w-full mx-auto" src={"/images/my-img.jpg"}/>
+        <Image 
+          src="/images/my-img.jpg" 
+          alt="عکس من" 
+          width={600} 
+          height={400} 
+          className="rounded-xl lg:w-1/2 w-full mx-auto" 
+        />
         <div id="eDiv" className="bg-pink-100 rounded-2xl">
           <h3 className="text-3xl text-center">:درباره من</h3>
           <h2 className="text-right">من امیر محمد محب هستم، اصالتاً از تبریز</h2>
@@ -100,17 +88,25 @@ export default function Home(){
           <h2 className="text-right">من پروژه‌های جذابی می‌سازم و اگر مایل باشید می‌توانید با من تماس بگیرید</h2>
         </div>
       </div>
+
       <div id="eDiv" className="flex flex-col justify-center items-center pb-3">
         <div className="w-11/12">
           <h2 className="text-right">من برای اولین بار در سن ۱۰ سالگی با اسکرچ کار کردن را شروع کردم و مدتی با آن بازی ساختم. بعداً به پایتون روی آوردم و عمدتاً از آن برای توسعه ربات‌های تریدر استفاده کردم که مؤثر واقع شدند</h2>
           <h2 className="text-right">اکنون دو سال است که برنامه‌نویس فرانت‌اند وب هستم و بیشتر روی جنبه‌های ظاهری وبسایت‌ها کار می‌کنم. اغلب اوقات، خودم رابط‌های وبسایت را طراحی و پیاده‌سازی کرده‌ام</h2>
         </div>
         <div className="flex">
-          <a><img className="w-16" src={"/images/call.png"}/></a>
-          <a><img className="w-16" src={"/images/github.png"}/></a>
-          <a><img className="w-16" src={"/images/telegram.png"}/></a>
+          <a>
+            <Image src="/images/call.png" alt="call" width={64} height={64} />
+          </a>
+          <a>
+            <Image src="/images/github.png" alt="github" width={64} height={64} />
+          </a>
+          <a>
+            <Image src="/images/telegram.png" alt="telegram" width={64} height={64} />
+          </a>
         </div>
       </div>
+
       <div className="flex justify-center gap-10 flex-col-reverse m-5 lg:flex-row">
         <div id="eDiv" className="rounded-2xl lg:w-1/2 w-auto flex flex-col items-center">
           <h3 className="text-3xl text-center mb-5">:مهارت‌ها</h3>
