@@ -103,16 +103,16 @@ export default function Home() {
           <h2 className="text-right">من برای اولین بار در سن ۱۰ سالگی با اسکرچ کار کردن را شروع کردم و مدتی با آن بازی ساختم. بعداً به پایتون روی آوردم و عمدتاً از آن برای توسعه ربات‌های تریدر استفاده کردم که مؤثر واقع شدند</h2>
           <h2 className="text-right">اکنون دو سال است که برنامه‌نویس فرانت‌اند وب هستم و بیشتر روی جنبه‌های ظاهری وبسایت‌ها کار می‌کنم. اغلب اوقات، خودم رابط‌های وبسایت را طراحی و پیاده‌سازی کرده‌ام</h2>
         </div>
-        <div className="flex">
-          <a>
-            <Image src="/images/call.png" alt="call" width={64} height={64} />
-          </a>
-          <a>
-            <Image src="/images/github.png" alt="github" width={64} height={64} />
-          </a>
-          <a>
-            <Image src="/images/telegram.png" alt="telegram" width={64} height={64} />
-          </a>
+        <div className="flex gap-5">
+                <a href="tel:+989014250939">
+                  <Image src="/images/call.png" alt="Call" width={64} height={64} />
+                </a>
+                <a href="https://github.com/Amirmohammadmoheb">
+                  <Image src="/images/github.png" alt="GitHub" width={64} height={64} />
+                </a>
+                <a href="https://t.me/+EzLO26iN8ullNzQ0">
+                  <Image src="/images/telegram.png" alt="Telegram" width={64} height={64} />
+                </a>
         </div>
       </div>
 
