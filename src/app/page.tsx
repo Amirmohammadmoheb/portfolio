@@ -104,14 +104,14 @@ export default function Home() {
           <h2>I first started working with Scratch at the age of 10 and spent some time creating games with it. Later, I moved on to Python and mostly used it to develop trading bots, which proved to be effective.</h2>
           <h2>I have now been a front-end web developer for two years, primarily working on the visual aspects of websites. Most of the time, I have been designing and building website interfaces on my own.</h2>
         </div>
-        <div className="flex">
-          <a>
+        <div className="flex gap-5">
+          <a href="tel:+989014250939">
             <Image src="/images/call.png" alt="Call" width={64} height={64} />
           </a>
-          <a>
+          <a href="https://github.com/Amirmohammadmoheb">
             <Image src="/images/github.png" alt="GitHub" width={64} height={64} />
           </a>
-          <a>
+          <a href="https://t.me/+EzLO26iN8ullNzQ0">
             <Image src="/images/telegram.png" alt="Telegram" width={64} height={64} />
           </a>
         </div>
